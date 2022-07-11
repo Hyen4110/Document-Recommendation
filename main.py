@@ -6,16 +6,16 @@ import numpy as np
 import train
 from data_loader import get_loaders
 
-ver_description = {2: "KoBERT cross-entropy",
-                   3: "KoBERT contrastive",
-                   4: "KoBERT(freeze) contrastvie"
+ver_description = {1: "dpr/aihbub-paper_summary/not using hard negative",
+                   2: "",
+                   3: ""
                    }
 
 def define_argparser():
     parser = argparse.ArgumentParser(description='Kibo Document Recommenda (Pytorch)')
 
     ## version (model)
-    parser.add_argument('--version', type=str, default = "dpr_aihbub")
+    parser.add_argument('--version', type=int, default = 1)
 
     parser.add_argument('--max_token_len', type=int, default = 128)
     parser.add_argument('--embedding_size', type=int, default = 128)  
@@ -37,8 +37,7 @@ def define_argparser():
     # data path
 
     parser.add_argument('--data_path', type=str, default='./data/AIHub/paper_summary/train/paper/csv/paper_train_total_2.csv',
-                        help='path for raw text data')  # './data/data_class_6(all).csv   or data_class_5.csv'
-
+                        help='path for raw text data')  
     config = parser.parse_args()
 
     return config
